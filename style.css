@@ -1,5 +1,5 @@
 body {
-    padding: 80px;
+    padding: 35px;
     background-color: #BAB86C;
 }
 
@@ -15,7 +15,6 @@ body {
     background-position: center;
     border-radius: 12px;
     margin-bottom: 30px;
-    /* box-shadow: 20px 15px 15px #9f9e6e; */
 }
 
 .title {
@@ -176,14 +175,12 @@ th {
 
 /* @ */
 @media (max-width: 480px) {
-    /* 1. Делаем контейнер чуть шире, чтобы не терять место по бокам */
     .box-schedule, .list-container {
         width: 95% !important;
         padding: 10px !important;
         margin: 10px auto;
     }
 
-    /* 2. ТАБЛИЦЫ: разрешаем им скроллиться вбок, если не влезают */
     .table-wrapper {
         overflow-x: auto;
         display: block;
@@ -191,22 +188,18 @@ th {
     }
 
     table {
-        font-size: 12px; /* Уменьшаем шрифт, чтобы текст влез */
+        font-size: 12px;
     }
 
     th, td {
         padding: 6px 2px !important;
-        word-break: break-word; /* Переносим длинные слова */
+        word-break: break-word;
     }
 
-    /* 3. КНОПКИ И ИНПУТЫ: делаем их крупнее, чтобы удобно было попадать пальцем */
     .addBtn, .date-input, select {
-        /* width: 100% !important; */
-        /* height: 45px; */
         font-size: 16px !important;
     }
 
-    /* 4. ЗАГОЛОВКИ: уменьшаем, чтобы не занимали пол-экрана */
     .title {
         font-size: 1.5rem !important;
     }
