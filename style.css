@@ -1,0 +1,213 @@
+body {
+    padding: 80px;
+    background-color: #BAB86C;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    padding: 30px;
+    background-image: url(./img/IMG_0534.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    /* box-shadow: 20px 15px 15px #9f9e6e; */
+}
+
+.title {
+    margin: 0;
+    font-weight: bold;
+    color: #fae5ec;
+    background-color: rgb(242, 110, 156, 0.7);
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 3px;
+}
+
+.deleteBtn {
+    background-color: #989658;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+}
+
+.deleteBtn:hover {
+    background-color: #d7d489;
+}
+
+.deleteBtn:active {
+    background-color: #5f5e44;
+}
+
+.addBtn {
+    padding: 12px 23px;
+    color: #f4f4f4;
+    background-color: #cf5781;
+    outline: 2px solid #9f9e6e;
+    font-weight: bold;
+    border-radius: 23px;
+    border: none
+}
+
+.addBtn:hover {
+    background-color: #cc7895;
+}
+
+.addBtn:active {
+    background-color: #753d51;
+}
+
+.task-input {
+    margin: 0;
+    padding: 8px 16px;
+    background-color: rgba(236, 200, 213, 0.7);
+    /* background-color: rgba(233, 151, 180, 0.7); */
+    outline: 2px solid #d3d296;
+    border: none;
+    border-radius: 18px;
+    color: #fff;
+}
+
+#prioritySelect {
+    background-color: rgba(250, 165, 196, 0.7);
+    /* background-color: #d783a0; */
+    outline: 2px solid #9f9e6e;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%; /* Занимает всю ширину контейнера */
+    max-width: 100%; /* Не дает таблице вылезать за пределы экрана */
+    table-layout: auto; /* Позволяет колонкам сжиматься в зависимости от текста */
+    word-wrap: break-word; /* Переносит длинные слова, чтобы не ломать ширину */
+}
+
+thead {
+    margin: 0 auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    color: #fff;
+    background-color: rgba(233, 151, 180, 0.7);
+    text-align: center;
+    padding: 8px 4px; /* Уменьшаем отступы для мобилок */
+    font-size: 14px; /* Можно чуть уменьшить шрифт на маленьких экранах */
+}
+
+th {
+    background-color: rgba(233, 151, 180, 0.7);
+    text-align: center;
+}
+
+/* Красивая красная кнопка удаления */
+.delete-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.table {
+    margin: 0;
+    margin-bottom: 30px;
+    width: 100%; /* Занимает всю ширину контейнера */
+    max-width: 100%; /* Не дает таблице вылезать за пределы экрана */
+    table-layout: auto; /* Позволяет колонкам сжиматься в зависимости от текста */
+    word-wrap: break-word; /* Переносит длинные слова, чтобы не ломать ширину */
+}
+
+.date-input {
+    margin-bottom: 30px;
+}
+
+.task-item {
+    margin: 0;
+    background-color: rgba(234, 179, 198, 0.7);
+    border-radius: 17px;
+    list-style: none;
+}
+
+.subtitle {
+    margin: 0;
+    color: #fff;
+    font-weight: 500;
+    padding: 10px;
+}
+
+.item-list {
+    margin: 0;
+    color: #fff;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.item-list:not(:last-child) {
+    margin-bottom: 17px;
+}
+
+/* библиотека */
+.choices__inner {
+    background-color: rgba(233, 151, 180, 0.7);
+    border: none;
+    min-height: auto;
+}
+
+.choices__list--dropdown, .choices__list[aria-expanded] {
+    word-break: keep-all;
+    width: 116%;
+}
+
+.choices[data-type*=select-one] .choices__input {
+    display: none;
+}
+
+.choices[data-type*=select-one] {
+    border-radius: 14px;
+}
+
+
+/* @ */
+@media (max-width: 480px) {
+    /* 1. Делаем контейнер чуть шире, чтобы не терять место по бокам */
+    .box-schedule, .list-container {
+        width: 95% !important;
+        padding: 10px !important;
+        margin: 10px auto;
+    }
+
+    /* 2. ТАБЛИЦЫ: разрешаем им скроллиться вбок, если не влезают */
+    .table-wrapper {
+        overflow-x: auto;
+        display: block;
+        width: 100%;
+    }
+
+    table {
+        font-size: 12px; /* Уменьшаем шрифт, чтобы текст влез */
+    }
+
+    th, td {
+        padding: 6px 2px !important;
+        word-break: break-word; /* Переносим длинные слова */
+    }
+
+    /* 3. КНОПКИ И ИНПУТЫ: делаем их крупнее, чтобы удобно было попадать пальцем */
+    .addBtn, .date-input, select {
+        /* width: 100% !important; */
+        /* height: 45px; */
+        font-size: 16px !important;
+    }
+
+    /* 4. ЗАГОЛОВКИ: уменьшаем, чтобы не занимали пол-экрана */
+    .title {
+        font-size: 1.5rem !important;
+    }
+}
