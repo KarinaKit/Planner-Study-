@@ -77,41 +77,106 @@ function updateSchedule() {
     // 0 - Воскресенье, 6 - Суббота
     if (dayOfWeek === 0 || dayOfWeek === 6) {
         taskList.innerHTML = `
-            <li class="item-list">Математика</li>
-            <li class="item-list">Английский</li>
-            <li class="item-list">Английский</li>
-            <li class="item-list">TypeScript</li>
+            <li class="item-list"><a href="#" id="mathBtn">Математика</a></li>
+            <li class="item-list"><a href="#" id="engBtn">Английский</a></li>
+            <li class="item-list"><a href="#" id="engBtn">Английский</a></li>
+            <li class="item-list"><a href="https://go.skillbox.ru/profession/profession-frontend-develop/typescript-and-developer-tools" target="_blank" id="tpsBtn">TypeScript</a></li>
         `;
     } else if (dayOfWeek === 3 || dayOfWeek === 5) {
-        taskList.innerHTML = `<h3 class="subtitle">Сегодня занятий нет</h3>`;
+        taskList.innerHTML = `<h3 class="subtitle">Сегодня занятия только 30 мин. в Doulingo</h3>`;
     } else {
         taskList.innerHTML = `
-            <li class="item-list">Математика</li>
-            <li class="item-list">Английский</li>
-            <li class="item-list">Английский</li>
+            <li class="item-list"><a href="#" id="mathBtn">Математика</a></li>
+            <li class="item-list"><a href="#" id="engBtn">Английский</a></li>
+            <li class="item-list"><a href="#" id="engBtn">Английский</a></li>
         `;
     }
+
+    // tpsBtn.style.color = '#724261';
+    // tpsBtn.style.textDecoration = 'none';
+    
+    document.querySelectorAll('#mathBtn').forEach((mathBtn => {
+        if(mathBtn) {
+            mathBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const ulPlan = document.querySelector('.plan-study');
+
+                if (ulPlan.style.display === 'none') {
+                    ulPlan.style.display = 'block'
+                } else {
+                    ulPlan.style.display = 'none'
+                }
+            });
+        }
+
+    }))
+
+    document.querySelectorAll('#engBtn').forEach((mathBtn => {
+        if(mathBtn) {
+            mathBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const ulPlan = document.querySelector('.plan-studyEng');
+
+                if (ulPlan.style.display === 'none') {
+                    ulPlan.style.display = 'block'
+                } else {
+                    ulPlan.style.display = 'none'
+                }
+            });
+        }
+    }))
+
+    loadMathStatus();
 }
+
+
+
+document.querySelectorAll('.item-math').forEach((itemMath => {
+    if(itemMath) {
+        itemMath.addEventListener('click', function (e) {
+        if(itemMath.style.textDecoration === 'none') {
+            itemMath.style.textDecoration = 'line-through'
+        } else {
+            itemMath.style.textDecoration = 'none';
+        }
+        saveMathStatus();
+    });
+    }
+}));
+
+function saveMathStatus () {
+    const items = document.querySelectorAll('.item-math');
+
+    const statusArray = Array.from(items).map(item => item.style.textDecoration === 'line-through');
+    localStorage.setItem('mathTopicsStatus', JSON.stringify(statusArray));
+}
+
+function loadMathStatus() {
+    const savedStatus = JSON.parse(localStorage.getItem('mathTopicsStatus'));
+    if(savedStatus) {
+        const items = document.querySelectorAll('.item-math');
+        items.forEach((item, index) => {
+            if(savedStatus[index]) {
+                item.style.textDecoration = 'line-through';
+            }
+        });
+    }
+}
+
+loadMathStatus();
+
 
 document.querySelector('.date-input').addEventListener('change', updateSchedule);
 
 
 document.querySelector('.addBtn').addEventListener('click', addTask);
 
-flatpickr(".date-input", {
-    dateFormat: "d.m.Y",
-    
-    onChange: function(selectedDates, dateStr) {
-        console.log("Выбрана дата:", dateStr);
-        updateSchedule();
-    }
-});
 
 flatpickr(".date-input", {
     altInput: true,
     altFormat: "d.m.Y",    
     dateFormat: "Y-m-d",
-    "locale": "ru",
+    locale: "ru",
     onChange: function() {
         updateSchedule();
     }
